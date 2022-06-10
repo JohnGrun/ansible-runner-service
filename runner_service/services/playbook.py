@@ -77,9 +77,14 @@ def list_playbooks():
     r = APIResponse()
     pb_dir = os.path.join(configuration.settings.playbooks_root_dir,
                           "project")
+    # Playbooks can have multiple valid extensions e.g. yml,yaml
+    extensions = ("*.yml","*.yaml")
+    playbook_list = []
+    for extension in extensions:
+        playbook_list.extend(glob.glob(os.path.join(pb_dir,
+                                             extension)))
     playbook_names = [os.path.basename(pb_path) for pb_path in
-                      glob.glob(os.path.join(pb_dir,
-                                             "*.yml"))]
+                      playbook_list]
     r.msg = "{} playbook found".format(len(playbook_names))
     r.status, r.data = "OK", {"playbooks": playbook_names}
 
