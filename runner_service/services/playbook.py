@@ -251,7 +251,8 @@ def start_playbook(playbook_name, vars=None, filter=None, tags=None):
                  "{}".format(configuration.settings.ssh_private_key))
     cmdline.append("--private-key {}".format(configuration.settings.ssh_private_key))
 
-    inventory_path = os.path.join(configuration.settings.playbooks_root_dir, 'inventory/hosts.yml')
+    # paths seem to be relative to the project_dir
+    inventory_path = '../inventory/hosts.yml'
     logger.debug("Run the playbook with an Inventory override of "
                  "{}".format(inventory_path))
 

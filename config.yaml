@@ -3,7 +3,7 @@ version: 1
 
 # playbooks_root_dir
 # location of the playbooks that the service will start
-playbooks_root_dir: './samples'
+playbooks_root_dir: '../sample'
 
 # port
 # tcp port for the service to listen to
@@ -22,3 +22,6 @@ artifacts_remove_age: 7
 
 # how frequently the old artifacts should be removed in days
 artifacts_remove_frequency: 1
+
+# Location of the ssh private key. Everything seems to be relative to the projects dir for some reason
+ssh_private_key: '../env/ssh_key'
